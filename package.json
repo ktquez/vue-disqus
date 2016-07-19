@@ -1,6 +1,6 @@
 {
   "name": "vue-disqus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vue component to integrate Disqus comments in your application, with support for SPA",
   "main": "vue-disqus.vue",
   "scripts": {
@@ -15,7 +15,7 @@
     "vue",
     "comments"
   ],
-  "author": "ktquez",
+  "author": "Alan Albuquerque (ktquez) <ktquez@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ktquez/vue-disqus/issues"
