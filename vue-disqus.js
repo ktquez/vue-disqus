@@ -26,16 +26,20 @@ Vue.component('disqus', {
     },
     init: function () {
       var self = this
+      window.disqus_config = function() {
+        this.page.url = (self.$route.path || window.location.pathname)
+        this.page.url = self.$el.baseURI
+      }
       setTimeout(function () {
-        (function () {
-          var dsq = document.createElement('script')
-          dsq.type = 'text/javascript'
-          dsq.async = true
-          dsq.setAttribute('id', 'embed-disqus')
-          dsq.src = 'http://' + self.shortname + '.disqus.com/embed.js'
-          document.getElementsByTagName('body')[0].appendChild(dsq)
-        })()
-      }, 100)
+        var d = document
+          , s = d.createElement('script')
+        s.setAttribute('id', 'embed-disqus')
+        s.setAttribute('data-timestamp', +new Date())
+        s.type = 'text/javascript'
+        s.async = true
+        s.src = '//' + self.shortname + '.disqus.com/embed.js'
+        ;(d.head || d.body).appendChild(s)
+      }, 0)
     }
   }
 });
