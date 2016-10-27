@@ -10,7 +10,7 @@
         required: true
       }
     },
-    ready () {
+    mounted () {
       if (window.DISQUS) {
         this.reset(window.DISQUS)
         return
@@ -48,5 +48,3 @@
     }
   }
 </script>
-
-<style></style>

@@ -1,5 +1,6 @@
 # vue-disqus
-> Vue component to integrate Disqus comments in your application [Vue.js](http://vuejs.org/), with support for SPA 
+> Vue component to integrate Disqus comments in your application [Vue.js](http://vuejs.org/), with support for SPA and Vue 2.*
+
 
 ## Installation
 
@@ -8,6 +9,8 @@
 ```shell
 $ npm install vue-disqus
 ```
+
+***For Vue 1.* use `npm install --save vue-disqus@1.0.2` (For version v1.0.2)[https://github.com/ktquez/vue-disqus/tree/v1.0.2]***
 
 ## Using in `.vue` files
 ##### 2.) Add the component disqus
