@@ -6,7 +6,7 @@ Vue.component('disqus', {
       required: true
     }
   },
-  ready: function () {
+  mounted: function () {
     if (window.DISQUS) {
       this.reset(window.DISQUS)
       return
