@@ -4,6 +4,7 @@
 
 <script>
   export default {
+    name: 'vue-disqus',
     props: {
       shortname: {
         type: String,
