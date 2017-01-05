@@ -13,7 +13,7 @@ $ npm install vue-disqus
 > For Vue 1.* use [v1.0.2](https://github.com/ktquez/vue-disqus/tree/v1.0.2) - `npm install --save vue-disqus@1.0.2` 
 
 ## Using in `.vue` files
-##### 2.) Add the component disqus
+##### 2.) Add the component `vue-disqus`
 ```javascript
 <template>
   // omited
@@ -23,12 +23,12 @@ $ npm install vue-disqus
 </template>
 
 <script>
-import Disqus from 'vue-disqus'
+import VueDisqus from 'vue-disqus'
 
 export default {
   // ...
   components: {
-    Disqus
+    VueDisqus
   }
 }
 // ...
@@ -36,8 +36,15 @@ export default {
 
 ---
 
+## Using in AMD or CommonJS modules
+##### 3.) require the component `vue-disqus`
+
+var VueDisqus = require('vue-disqus')
+
+---
+
 ## Using with HTML files
-##### 3.) Add the component to the base instance Vue
+##### 4.) Add the component to the base instance Vue
 
 ```html
 <!-- Required Javascript -->
@@ -49,7 +56,7 @@ export default {
 <!-- Assuming your view app is APP. -->
 <body id="app">
   <div class="comments">
-    <disqus shortname="your_shortname_disqus"></disqus>
+    <vue-disqus shortname="your_shortname_disqus"></vue-disqus>
   </div>
 </body>
 ```
