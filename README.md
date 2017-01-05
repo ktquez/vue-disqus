@@ -23,7 +23,7 @@ $ npm install vue-disqus
 </template>
 
 <script>
-import VueDisqus from 'vue-disqus'
+import VueDisqus from 'vue-disqus/VueDisqus.vue'
 
 export default {
   // ...
