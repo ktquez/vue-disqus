@@ -19,6 +19,14 @@
       shortname: {
         type: String,
         required: true
+      },
+      identifier: {
+        type: String,
+        required: false
+      },
+      url: {
+        type: String,
+        required: false
       }
     },
     mounted: function () {
@@ -34,16 +42,16 @@
         dsq.reset({
           reload: true,
           config: function () {
-            this.page.identifier = (self.$route.path || window.location.pathname)
-            this.page.url = self.$el.baseURI
+            this.page.identifier = (self.identifier || self.$route.path || window.location.pathname)
+            this.page.url = (self.url || self.$el.baseURI)
           }
         })
       },
       init: function () {
         var self = this
         window.disqus_config = function() {
-          this.page.url = (self.$route.path || window.location.pathname)
-          this.page.url = self.$el.baseURI
+          this.page.identifier = (self.identifier || self.$route.path || window.location.pathname)
+          this.page.url = (self.url || self.$el.baseURI)
         }
         setTimeout(function () {
           var d = document
