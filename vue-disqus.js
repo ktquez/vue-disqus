@@ -27,6 +27,10 @@
       url: {
         type: String,
         required: false
+      },
+      title: {
+        type: String,
+        required: false
       }
     },
     mounted: function () {
@@ -44,6 +48,9 @@
           config: function () {
             this.page.identifier = (self.identifier || self.$route.path || window.location.pathname)
             this.page.url = (self.url || self.$el.baseURI)
+            if(self.title){
+              this.page.title = self.title;
+            }
           }
         })
       },
@@ -52,6 +59,9 @@
         window.disqus_config = function() {
           this.page.identifier = (self.identifier || self.$route.path || window.location.pathname)
           this.page.url = (self.url || self.$el.baseURI)
+          if(self.title){
+            this.page.title = self.title;
+          }
         }
         setTimeout(function () {
           var d = document
