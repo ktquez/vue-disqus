@@ -31,6 +31,18 @@
       title: {
         type: String,
         required: false
+      },
+      remote_auth_s3: {
+        type: String,
+        required: false
+      },
+      api_key: {
+        type: String,
+        required: false
+      },
+      sso_config: {
+        type: Object,
+        required: false
       }
     },
     mounted: function () {
@@ -48,8 +60,17 @@
           config: function () {
             this.page.identifier = (self.identifier || self.$route.path || window.location.pathname)
             this.page.url = (self.url || self.$el.baseURI)
-            if(self.title){
+            if (self.title){
               this.page.title = self.title;
+            }
+            if (self.remote_auth_s3){
+              this.page.remote_auth_s3 = self.remote_auth_s3;
+            }
+            if (self.key){
+              this.page.api_key = self.key;
+            }
+            if (self.sso_config){
+              this.sso = self.sso_config;
             }
           }
         })
@@ -59,8 +80,17 @@
         window.disqus_config = function() {
           this.page.identifier = (self.identifier || self.$route.path || window.location.pathname)
           this.page.url = (self.url || self.$el.baseURI)
-          if(self.title){
+          if (self.title){
             this.page.title = self.title;
+          }
+          if (self.remote_auth_s3){
+            this.page.remote_auth_s3 = self.remote_auth_s3;
+          }
+          if (self.api_key){
+            this.page.api_key = self.api_key;
+          }
+          if (self.sso_config){
+            this.sso = self.sso_config;
           }
         }
         setTimeout(function () {
