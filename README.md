@@ -63,9 +63,14 @@ var VueDisqus = require('vue-disqus')
 
 ## Props
 
-Prop           | Data Type  | required  | Description
--------------- | ---------- | --------- | -----------
-`shortname`    | String     | true      | Your shortname disqus.
+Prop            | Data Type  | required  | Description
+--------------- | ---------- | --------- | -----------
+`shortname`     | String     | true      | Your shortname disqus.
+`title`         | String     | false     | Title to identify current page.
+`identifier`    | String     | false     | Your unique identifier
+`sso_config`    | Object     | false     | Single sign-on (SSO) 
+`api_key`       | String     | false     | Your API key disqus
+`remote_auth_s3`| String     | false     | implementation with Laravel/PHP
 
 
 ## License
