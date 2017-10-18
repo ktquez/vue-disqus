@@ -14,7 +14,7 @@ $ npm install vue-disqus
 
 ## Using in `.vue` files
 ##### 2.) Add the component `vue-disqus`
-```javascript
+```vue
 <template>
   // omited (identifier and url are optional)
   <div class="comments">
