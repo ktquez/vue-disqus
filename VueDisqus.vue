@@ -48,51 +48,45 @@
         dsq.reset({
           reload: true,
           config: function () {
-            this.page.identifier = (self.identifier || self.$route.path || window.location.pathname)
-            this.page.url = (self.url || self.$el.baseURI)
-            if (self.title){
-              this.page.title = self.title;
-            }
-            if (self.remote_auth_s3){
-              this.page.remote_auth_s3 = self.remote_auth_s3;
-            }
-            if (self.key){
-              this.page.api_key = self.key;
-            }
-            if (self.sso_config){
-              this.sso = self.sso_config;
-            }
+            self.setBaseConfig(this)
           }
         })
       },
       init () {
         const self = this
         window.disqus_config = function() {
-          this.page.identifier = (self.identifier || self.$route.path || window.location.pathname)
-          this.page.url = (self.url || self.$el.baseURI)
-          if (self.title){
-            this.page.title = self.title;
-          }
-          if (self.remote_auth_s3){
-            this.page.remote_auth_s3 = self.remote_auth_s3;
-          }
-          if (self.api_key){
-            this.page.api_key = self.api_key;
-          }
-          if (self.sso_config){
-            this.sso = self.sso_config;
-          }
+          self.setBaseConfig(this)
         }
         setTimeout(() => {
           let d = document
             , s = d.createElement('script')
-          s.type = 'text/javascript'
-          s.async = true
           s.setAttribute('id', 'embed-disqus')
           s.setAttribute('data-timestamp', +new Date())
+          s.type = 'text/javascript'
+          s.async = true
           s.src = `//${this.shortname}.disqus.com/embed.js`
           ;(d.head || d.body).appendChild(s)
         }, 0)
+      },
+      setBaseConfig (disqusConfig){
+        disqusConfig.page.identifier = (this.identifier || this.$route.path || window.location.pathname)
+        disqusConfig.page.url = (this.url || this.$el.baseURI)
+        if (this.title){
+          disqusConfig.page.title = this.title;
+        }
+        if (this.remote_auth_s3){
+          disqusConfig.page.remote_auth_s3 = this.remote_auth_s3;
+        }
+        if (this.key){
+          disqusConfig.page.api_key = this.key;
+        }
+        if (this.sso_config){
+          disqusConfig.sso = this.sso_config;
+        }
+
+        disqusConfig.callbacks.onReady = [() => {
+          this.$emit('ready')
+        }]
       }
     }
   }

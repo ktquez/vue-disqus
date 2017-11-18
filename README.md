@@ -72,6 +72,14 @@ Prop            | Data Type  | required  | Description
 `api_key`       | String     | false     | Your API key disqus
 `remote_auth_s3`| String     | false     | implementation with Laravel/PHP
 
+## Events
+
+Event name | Description 
+---------- | ----------- 
+`ready`    | When Disqus is ready. This can be used to show a placeholder or loading indicator.
+
+
+See [Event Handling](https://vuejs.org/v2/guide/events.html).
 
 ## License
 
