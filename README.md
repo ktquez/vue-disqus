@@ -18,7 +18,7 @@ $ npm install vue-disqus
 <template>
   // omited (identifier and url are optional)
   <div class="comments">
-    <disqus shortname="your_shortname_disqus" :identifier="page_id" url="http://example.com/path"></disqus>
+    <vue-disqus shortname="your_shortname_disqus" :identifier="page_id" url="http://example.com/path"></vue-disqus>
   </div>
 </template>
 
