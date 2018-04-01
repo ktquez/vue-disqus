@@ -77,8 +77,8 @@
         if (this.remote_auth_s3){
           disqusConfig.page.remote_auth_s3 = this.remote_auth_s3;
         }
-        if (this.key){
-          disqusConfig.page.api_key = this.key;
+        if (this.api_key){
+          disqusConfig.page.api_key = this.api_key;
         }
         if (this.sso_config){
           disqusConfig.sso = this.sso_config;
