@@ -33,6 +33,10 @@
       sso_config: {
         type: Object,
         required: false
+      },
+      language: {
+        type: String,
+        required: false
       }
     },
     mounted () {
@@ -82,6 +86,9 @@
         }
         if (this.sso_config){
           disqusConfig.sso = this.sso_config;
+        }
+        if (this.language){
+          disqusConfig.language = this.language;
         }
 
         disqusConfig.callbacks.onReady = [() => {
