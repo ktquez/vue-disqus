@@ -4,61 +4,48 @@
 
 ## Installation
 
-##### 1.) Install package via NPM
+##### Install package via NPM
 
 ```shell
 $ npm install vue-disqus
 ```
 
-> For Vue 1.* use [v1.0.2](https://github.com/ktquez/vue-disqus/tree/v1.0.2) - `npm install --save vue-disqus@1.0.2`
+#### Install in your vue app
+```javascript
+import Vue from 'vue'
+import VueDisqus from 'vue-disqus'
 
-## Using in `.vue` files
-##### 2.) Add the component `vue-disqus`
+Vue.use(VueDisqus)
+...
+```
+
 ```vue
 <template>
-  // omited (identifier and url are optional)
   <div class="comments">
     <vue-disqus shortname="your_shortname_disqus" :identifier="page_id" url="http://example.com/path"></vue-disqus>
   </div>
 </template>
-
-<script>
-import VueDisqus from 'vue-disqus/VueDisqus.vue'
-
-export default {
-  // ...
-  components: {
-    VueDisqus
-  }
-}
 // ...
 ```
 
 ---
 
-## Using in AMD or CommonJS modules
-##### 3.) require the component `vue-disqus`
-
-var VueDisqus = require('vue-disqus')
-
----
-
 ## Using with HTML files
-##### 4.) Add the component to the base instance Vue
+##### Add the component to the base instance Vue
 
 ```html
 <!-- Required Javascript -->
-<script src="vue.js"></script>
-<script src="node_modules/vue-disqus/vue-disqus.js"></script>
+<script src="https://vuejs-cdn-link"></script>
+<script src="node_modules/vue-disqus/dist/vue-disqus.js"></script>
 ```
 
 ```html
 <!-- Assuming your view app is APP. -->
-<body id="app">
+<div id="app">
   <div class="comments">
     <vue-disqus shortname="your_shortname_disqus"></vue-disqus>
   </div>
-</body>
+</div>
 ```
 
 ## Props
@@ -84,6 +71,13 @@ See [Event Handling](https://vuejs.org/v2/guide/events.html).
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT)
+[MIT](https://github.com/ktquez/vue-disqus/blob/master/LICENSE)
 
+## Contributing
+- Check the open issues or open a new issue to start a discussion around your feature idea or the bug you found.
+- Fork repository, make changes, add your name and link in the authors session CONTRIBUTING.md
+- Send a pull request
 
+If you want a faster communication, find me on [@ktquez](https://twitter.com/ktquez)
+
+**thank you**
