@@ -19,6 +19,39 @@ Vue.use(VueDisqus)
 ...
 ```
 
+Using in Vue file components
+```vue
+<template>
+  <div class="comments">
+    <vue-disqus shortname="your_shortname_disqus" :identifier="page_id" url="http://example.com/path"></vue-disqus>
+  </div>
+</template>
+// ...
+```
+
+---
+
+#### Install in Nuxt
+Create plugin file `plugins/disqus.js`
+
+```javascript
+import Vue from 'vue'
+import VueDisqus from 'vue-disqus'
+
+Vue.use(VueDisqus)
+
+```
+
+In config file `nuxt.config.js`
+```javascript
+...
+plugins: [
+  '~/plugins/disqus'
+]
+
+```
+
+Using in Vue file components
 ```vue
 <template>
   <div class="comments">
@@ -36,7 +69,7 @@ Vue.use(VueDisqus)
 ```html
 <!-- Required Javascript -->
 <script src="https://vuejs-cdn-link"></script>
-<script src="node_modules/vue-disqus/dist/vue-disqus.js"></script>
+<script src="https://unpkg.com/vue-disqus"></script>
 ```
 
 ```html
