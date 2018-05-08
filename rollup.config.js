@@ -14,12 +14,16 @@ export default {
   },
   plugins: [
     babel({
-      exclude: 'node_modules/**'
+      include: [
+        'node_modules/vue-template-es2015-compiler'
+      ]
     }),
     butternut(),
     resolve(),
     commonJs(),
-    VueLoader(),
+    VueLoader({
+      compileTemplate: true
+    }),
     replace({
       'process.env.NODE_ENV': JSON.stringify('production')
     })
