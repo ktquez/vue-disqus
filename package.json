@@ -1,6 +1,6 @@
 {
   "name": "vue-disqus",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Vue component to integrate Disqus comments in your application, with support for SPA",
   "main": "dist/vue-disqus.cjs.js",
   "scripts": {
