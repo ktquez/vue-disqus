@@ -10,6 +10,12 @@
 $ npm install vue-disqus
 ```
 
+#### Include via CDN
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/vue-disqus@3/dist/vue-disqus.js"></script>
+```
+
 #### Install in your vue app
 ```javascript
 import Vue from 'vue'
