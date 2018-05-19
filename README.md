@@ -1,4 +1,6 @@
 # vue-disqus
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/ktquez/vue-disqus.svg)](https://greenkeeper.io/)
 > Vue component to integrate Disqus comments in your application [Vue.js](http://vuejs.org/), with support for SPA and Vue 2.*
 
 
