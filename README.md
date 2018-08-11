@@ -99,6 +99,11 @@ Prop            | Data Type  | required  | Description
 `remote_auth_s3`| String     | false     | implementation with Laravel/PHP
 `language`      | String     | false     | Language overrides
 
+
+## Important
+Do not use hash (`myurl.com/#/`) in urls, if you are using the vue-router always opt for HTML5 `history: mode`.
+
+
 ## Events
 
 Event name | Description
@@ -119,4 +124,4 @@ See [Event Handling](https://vuejs.org/v2/guide/events.html).
 
 If you want a faster communication, find me on [@ktquez](https://twitter.com/ktquez)
 
-**thank you**
+**Thank you**
