@@ -101,7 +101,7 @@ Prop            | Data Type  | required  | Description
 
 
 ## Important
-Do not use hash (`myurl.com/#/`) in urls, if you are using the vue-router always opt for HTML5 `history: mode`.
+Don't use hash (`myurl.com/#/`) in urls, if you are using the vue-router always opt for HTML5 `history: mode`.
 
 
 ## Events
