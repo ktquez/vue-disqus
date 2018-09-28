@@ -95,8 +95,8 @@
           this.$emit('ready')
         }]
         
-        disqusConfig.callbacks.onNewComment = [() => {
-          this.$emit('new-comment')
+        disqusConfig.callbacks.onNewComment = [(comment) => {
+          this.$emit('new-comment', comment)
         }]
       }
     }
