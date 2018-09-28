@@ -106,9 +106,10 @@ Don't use hash (`myurl.com/#/`) in urls, if you are using the vue-router always 
 
 ## Events
 
-Event name | Description
----------- | -----------
-`ready`    | When Disqus is ready. This can be used to show a placeholder or loading indicator.
+Event name    | Description
+------------- | -----------
+`ready`       | When Disqus is ready. This can be used to show a placeholder or loading indicator.
+`new-comment` | When a new comment is posted. This can be used to update comment counters in real time.
 
 
 See [Event Handling](https://vuejs.org/v2/guide/events.html).
