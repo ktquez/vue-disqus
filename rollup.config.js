@@ -4,6 +4,7 @@ import VueLoader from 'rollup-plugin-vue'
 import butternut from 'rollup-plugin-butternut'
 import babel from 'rollup-plugin-babel'
 import commonJs from 'rollup-plugin-commonjs'
+import copy from 'rollup-plugin-copy-glob'
 import chokidar from 'chokidar'
 
 export default {
@@ -24,9 +25,12 @@ export default {
     VueLoader({
       compileTemplate: true
     }),
+    copy([
+      { files: 'src/vue-disqus.vue', dest: 'dist' },
+    ], { verbose: true }),
     replace({
       'process.env.NODE_ENV': JSON.stringify('production')
-    })
+    })    
   ],
   output: [
     {
