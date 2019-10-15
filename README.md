@@ -93,6 +93,7 @@ Prop            | Data Type  | required  | Description
 --------------- | ---------- | --------- | -----------
 `shortname`     | String     | true      | Your shortname disqus.
 `title`         | String     | false     | Title to identify current page.
+`url`           | String     | false     | Your URL where Disqus is present
 `identifier`    | String     | false     | Your unique identifier
 `sso_config`    | Object     | false     | Single sign-on (SSO)
 `api_key`       | String     | false     | Your API key disqus
