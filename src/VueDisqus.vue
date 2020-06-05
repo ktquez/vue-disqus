@@ -5,6 +5,7 @@
 <script>
 export default {
   name: 'VueDisqus',
+
   props: {
     shortname: {
       type: String,
@@ -39,28 +40,37 @@ export default {
       required: false
     }
   },
+
   mounted () {
-    if (window.DISQUS) {
-      this.reset(window.DISQUS)
-      return
-    }
+    if (window.DISQUS) return this.reset()
     this.init()
   },
+
   methods: {
-    reset (dsq) {
-      const self = this
+    reset (dsq = window.DISQUS) {
+      const setBaseConfig = this.setBaseConfig
       dsq.reset({
         reload: true,
         config: function () {
-          self.setBaseConfig(this)
+          setBaseConfig(this)
         }
       })
     },
+
     init () {
-      const self = this
+      const setBaseConfig = this.setBaseConfig
       window.disqus_config = function () {
-        self.setBaseConfig(this)
+        setBaseConfig(this)
       }
+      this.makeEmbedScript()
+      if (this.$route) this.watchUrl()
+    },
+
+    watchUrl () {
+      this.$watch('$route.path', () => this.reset())
+    },
+
+    makeEmbedScript () {
       setTimeout(() => {
         const d = document
         const s = d.createElement('script')
@@ -72,6 +82,7 @@ export default {
         ;(d.head || d.body).appendChild(s)
       }, 0)
     },
+
     setBaseConfig (disqusConfig) {
       disqusConfig.page.identifier = (this.identifier || this.$route.path || window.location.pathname)
       disqusConfig.page.url = (this.url || this.$el.baseURI)
