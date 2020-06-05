@@ -1,22 +1,27 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    name: 'post',
+    path: '/post/:id',
+    component: () => import('@/views/Post'),
+    props: to => ({ post: to.meta.data }),
+    meta: {
+      fetch (id) {
+        return new Promise((resolve, reject) => {
+          fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+            .then(res => {
+              if (res.ok) return res.json()
+              throw new Error('Post not exists')
+            })
+            .then(resolve)
+            .catch(reject)
+        })
+      }
+    }
   }
 ]
 
@@ -24,6 +29,11 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeResolve(async (to, from, next) => {
+  if (to.meta.fetch) to.meta.data = await to.meta.fetch(to.params.id)
+  next()
 })
 
 export default router
