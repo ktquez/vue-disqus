@@ -1,4 +1,4 @@
-import VueDisqus from "./VueDisqus.vue"
+import VueDisqus from './VueDisqus.vue'
 
 export default function install (Vue) {
   Vue.component('VueDisqus', VueDisqus)
