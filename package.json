@@ -14,12 +14,14 @@
     "build:umd": "rollup --config rollup.config.prod.js --format umd --file dist/vue-disqus.umd.js",
     "build:es": "rollup --config rollup.config.prod.js --format es --file dist/vue-disqus.esm.js",
     "build:unpkg": "rollup --config rollup.config.prod.js --format iife --file dist/vue-disqus.min.js",
+    "demo:dev": "cd demo && npm run serve",
+    "demo:build": "cd demo && npm run build",
+    "demo:publish": "surge ./demo/dist https://vue-disqus.surge.sh/",
     "release": "standard-version",
     "test:unit": "jest",
     "test:e2e": "node_modules/.bin/cypress run --headless",
     "test:e2e:open": "node_modules/.bin/cypress open ",
-    "project:publish": "git push --tags origin master && npm run build && npm publish",
-    "deploy": "node_modules/.binx/surge example/ https://vue-disqus.surge.sh/"
+    "project:publish": "git push --tags origin master && npm run build && npm publish"
   },
   "repository": {
     "type": "git",
@@ -64,7 +66,7 @@
     "rollup-plugin-livereload": "^1.3.0",
     "rollup-plugin-serve": "^1.0.1",
     "rollup-plugin-terser": "^6.1.0",
-    "rollup-plugin-vue": "^6.0.0-beta.5",
+    "rollup-plugin-vue": "^5.1.9",
     "standard-version": "^8.0.0",
     "surge": "^0.21.3",
     "vue": "^2.6.11",
