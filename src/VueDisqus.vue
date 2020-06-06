@@ -56,11 +56,7 @@ export default {
         setBaseConfig(this)
       }
       this.makeEmbedScript()
-      if (this.$route) this.watchUrl()
-    },
-
-    watchUrl () {
-      this.$watch('$route.path', () => this.reset())
+      if (this.$route) this.$watch('$route.path', () => this.reset())
     },
 
     makeEmbedScript () {
