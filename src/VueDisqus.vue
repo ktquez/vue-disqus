@@ -1,5 +1,5 @@
 <template>
-  <div id="disqus_thread" />
+  <div id="disqus_thread" style="min-height: 200px" />
 </template>
 
 <script>
