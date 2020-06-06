@@ -3,7 +3,12 @@
 </template>
 
 <script>
-import { allowedPageConfigKeys, allowedSSOKeys } from './utils'
+import {
+  callbacks,
+  getEmitName,
+  allowedSSOKeys,
+  allowedPageConfigKeys
+} from './utils'
 
 export default {
   name: 'VueDisqus',
@@ -34,7 +39,7 @@ export default {
       type: Object,
       default: () => ({
         root: null,
-        rootMargin: '200px',
+        rootMargin: '300px',
         threshold: 0.5
       })
     }
@@ -56,16 +61,6 @@ export default {
   },
 
   methods: {
-    reset (dsq = window.DISQUS) {
-      const setBaseConfig = this.setBaseConfig
-      dsq.reset({
-        reload: true,
-        config: function () {
-          setBaseConfig(this)
-        }
-      })
-    },
-
     init () {
       if (window.DISQUS) return this.reset()
       const setBaseConfig = this.setBaseConfig
@@ -74,6 +69,16 @@ export default {
       }
       this.makeEmbedScript()
       if (this.$route) this.$watch('$route.path', () => this.reset())
+    },
+
+    reset (dsq = window.DISQUS) {
+      const setBaseConfig = this.setBaseConfig
+      dsq.reset({
+        reload: true,
+        config: function () {
+          setBaseConfig(this)
+        }
+      })
     },
 
     observerDisqus () {
@@ -106,6 +111,19 @@ export default {
       }, 0)
     },
 
+    setBaseConfig (disqusConfig) {
+      this.setPageConfig(disqusConfig)
+      this.cbDisqus(disqusConfig)
+
+      if (this.ssoConfig && Object.keys(this.ssoConfig).length) {
+        Object.assign(disqusConfig.sso, this.ssoConfig)
+      }
+
+      if (this.lang) {
+        disqusConfig.language = this.lang
+      }
+    },
+
     setPageConfig (disqusConfig) {
       const defaultConfig = {
         url: this.$el.baseURI,
@@ -120,26 +138,11 @@ export default {
     },
 
     cbDisqus (disqusConfig) {
-      disqusConfig.callbacks.onReady = [() => {
-        this.$emit('ready')
-      }]
-
-      disqusConfig.callbacks.onNewComment = [(comment) => {
-        this.$emit('new-comment', comment)
-      }]
-    },
-
-    setBaseConfig (disqusConfig) {
-      this.setPageConfig(disqusConfig)
-      this.cbDisqus(disqusConfig)
-
-      if (this.ssoConfig && Object.keys(this.ssoConfig).length) {
-        Object.assign(disqusConfig.sso, this.ssoConfig)
-      }
-
-      if (this.lang) {
-        disqusConfig.language = this.lang
-      }
+      callbacks.forEach(cb => {
+        disqusConfig.callbacks[cb] = [e => {
+          this.$emit(getEmitName(cb), e)
+        }]
+      })
     }
   }
 }

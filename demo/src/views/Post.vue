@@ -52,7 +52,7 @@
     <hr>
 
     <section>
-      <VueDisqus shortname="ktquez" :lang="lang" />
+      <VueDisqus shortname="ktquez" :lang="lang" @new-comment="newComment" />
     </section>
   </article>
 </template>
@@ -71,6 +71,12 @@ export default {
 
   data: () => ({
     lang: 'en'
-  })
+  }),
+
+  methods: {
+    newComment (e) {
+      console.log(e)
+    }
+  }
 }
 </script>
