@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import { allowedPageConfigKeys, allowedSSOKeys } from './utils'
+
 export default {
   name: 'VueDisqus',
 
@@ -11,33 +13,24 @@ export default {
       type: String,
       required: true
     },
-    identifier: {
-      type: String,
-      required: false
-    },
-    url: {
-      type: String,
-      required: false
-    },
-    title: {
-      type: String,
-      required: false
-    },
-    remote_auth_s3: {
-      type: String,
-      required: false
-    },
-    api_key: {
-      type: String,
-      required: false
-    },
-    sso_config: {
+    pageConfig: {
       type: Object,
-      required: false
+      required: false,
+      validator: config => Object.keys(config).every(key => allowedPageConfigKeys.includes(key))
     },
-    language: {
-      type: String,
-      required: false
+    ssoConfig: {
+      type: Object,
+      required: false,
+      validator: config => Object.keys(config).every(key => allowedSSOKeys.includes(key))
+    },
+    lang: {
+      type: String
+    }
+  },
+
+  watch: {
+    lang () {
+      this.reset()
     }
   },
 
@@ -83,25 +76,20 @@ export default {
       }, 0)
     },
 
-    setBaseConfig (disqusConfig) {
-      disqusConfig.page.identifier = (this.identifier || this.$route.path || window.location.pathname)
-      disqusConfig.page.url = (this.url || this.$el.baseURI)
-      if (this.title) {
-        disqusConfig.page.title = this.title
-      }
-      if (this.remote_auth_s3) {
-        disqusConfig.page.remote_auth_s3 = this.remote_auth_s3
-      }
-      if (this.api_key) {
-        disqusConfig.page.api_key = this.api_key
-      }
-      if (this.sso_config) {
-        disqusConfig.sso = this.sso_config
-      }
-      if (this.language) {
-        disqusConfig.language = this.language
+    setPageConfig (disqusConfig) {
+      const defaultConfig = {
+        url: this.$el.baseURI,
+        identifier: (this.$route.path || window.location.pathname)
       }
 
+      Object.assign(disqusConfig.page, defaultConfig)
+
+      if (this.pageConfig && Object.keys(this.pageConfig).length) {
+        Object.assign(disqusConfig.page, this.pageConfig)
+      }
+    },
+
+    cbDisqus (disqusConfig) {
       disqusConfig.callbacks.onReady = [() => {
         this.$emit('ready')
       }]
@@ -109,6 +97,19 @@ export default {
       disqusConfig.callbacks.onNewComment = [(comment) => {
         this.$emit('new-comment', comment)
       }]
+    },
+
+    setBaseConfig (disqusConfig) {
+      this.setPageConfig(disqusConfig)
+      this.cbDisqus(disqusConfig)
+
+      if (this.ssoConfig && Object.keys(this.ssoConfig).length) {
+        Object.assign(disqusConfig.sso, this.ssoConfig)
+      }
+
+      if (this.lang) {
+        disqusConfig.language = this.lang
+      }
     }
   }
 }
