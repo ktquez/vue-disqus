@@ -47,12 +47,14 @@
 
     <section>
       <button @click="lang = (lang === 'en') ? 'it' : 'en'">Change disqus to {{ lang === 'en' ? 'ITALIAN' : 'ENGLISH' }} language</button>
+      -
+      <button @click="$refs.disqus.reset()">Reset disqus</button>
     </section>
 
     <hr>
 
     <section>
-      <VueDisqus shortname="ktquez" :lang="lang" @new-comment="newComment" />
+      <VueDisqus ref="disqus" shortname="ktquez" :lang="lang" @new-comment="newComment" />
     </section>
   </article>
 </template>
