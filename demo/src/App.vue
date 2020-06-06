@@ -2,7 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/post/1">Post 1</router-link> |
-      <router-link to="/post/2">Post 2</router-link>
+      <router-link to="/post/2">Post 2</router-link> |
+      <a href="/post/3">Post (testing the lazy load disqus)</a>
     </div>
     <router-view/>
   </div>
@@ -22,12 +23,13 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 #nav {
-  padding: 30px;
+  padding: 30px 0;
 }
 
 #nav a {
@@ -56,43 +58,10 @@ export default {
   width: 100%;
   height: 4px;
 }
-@media (min-width: 600px) {
-  #nprogress .bar {
-    background: #fff;
-  }
-}
-#nprogress .peg {
-  display: block;
-  position: absolute;
-  right: 0px;
-  width: 100px;
-  height: 100%;
-  box-shadow: 0 0 10px #41b482;
-  opacity: 1;
-  transform: rotate(3deg) translate(0px, -4px);
-}
-#nprogress .spinner {
-  display: block;
-  position: fixed;
-  z-index: 1031;
-  top: 15px;
-  right: 15px;
-}
-#nprogress .spinner-icon {
-  width: 18px;
-  height: 18px;
-  box-sizing: border-box;
-  border: solid 2px transparent;
-  border-top-color: #41b482;
-  border-left-color: #41b482;
-  border-radius: 50%;
-  animation: nprogress-spinner 400ms linear infinite;
-}
 .nprogress-custom-parent {
   overflow: hidden;
   position: relative;
 }
-.nprogress-custom-parent #nprogress .spinner,
 .nprogress-custom-parent #nprogress .bar {
   position: absolute;
 }

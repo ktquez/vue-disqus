@@ -25,8 +25,24 @@ export default {
     },
     lang: {
       type: String
+    },
+    lazy: {
+      type: Boolean,
+      default: true
+    },
+    lazyConfig: {
+      type: Object,
+      default: () => ({
+        root: null,
+        rootMargin: '200px',
+        threshold: 0.5
+      })
     }
   },
+
+  data: () => ({
+    observer: null
+  }),
 
   watch: {
     lang () {
@@ -35,7 +51,7 @@ export default {
   },
 
   mounted () {
-    if (window.DISQUS) return this.reset()
+    if (this.lazy) return this.observerDisqus()
     this.init()
   },
 
@@ -51,12 +67,30 @@ export default {
     },
 
     init () {
+      if (window.DISQUS) return this.reset()
       const setBaseConfig = this.setBaseConfig
       window.disqus_config = function () {
         setBaseConfig(this)
       }
       this.makeEmbedScript()
       if (this.$route) this.$watch('$route.path', () => this.reset())
+    },
+
+    observerDisqus () {
+      if ('IntersectionObserver' in window) {
+        this.observer = new IntersectionObserver(this.handleObserver, this.lazyConfig)
+        return this.observer.observe(this.$el)
+      }
+      this.init()
+    },
+
+    handleObserver (entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.observer.disconnect()
+          this.init()
+        }
+      })
     },
 
     makeEmbedScript () {
