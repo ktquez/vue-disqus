@@ -10,8 +10,16 @@
     </p>
     </section>
 
+    <hr>
+
     <section>
-      <VueDisqus shortname="ktquez" />
+      <button @click="lang = (lang === 'en') ? 'it' : 'en'">Change disqus to {{ lang === 'en' ? 'ITALIAN' : 'ENGLISH' }} language</button>
+    </section>
+
+    <hr>
+
+    <section>
+      <VueDisqus shortname="ktquez" :lang="lang" />
     </section>
   </article>
 </template>
@@ -21,10 +29,16 @@ import VueDisqus from '../../vue-disqus'
 
 export default {
   name: 'Post',
+
   props: ['post'],
+
   components: {
     VueDisqus
-  }
+  },
+
+  data: () => ({
+    lang: 'en'
+  })
 }
 </script>
 
