@@ -4,11 +4,11 @@
 
 <script>
 import {
-  callbacks,
-  getEmitName,
-  allowedSSOKeys,
-  allowedPageConfigKeys
-} from './utils'
+  SSO_KEYS,
+  CALLBACKS,
+  PAGE_CONFIG_KEYS
+} from './constants'
+import { getEmitName } from './utils'
 
 export default {
   name: 'VueDisqus',
@@ -21,12 +21,12 @@ export default {
     pageConfig: {
       type: Object,
       required: false,
-      validator: config => Object.keys(config).every(key => allowedPageConfigKeys.includes(key))
+      validator: config => Object.keys(config).every(key => PAGE_CONFIG_KEYS.includes(key))
     },
     ssoConfig: {
       type: Object,
       required: false,
-      validator: config => Object.keys(config).every(key => allowedSSOKeys.includes(key))
+      validator: config => Object.keys(config).every(key => SSO_KEYS.includes(key))
     },
     lang: {
       type: String
@@ -99,16 +99,14 @@ export default {
     },
 
     makeEmbedScript () {
-      setTimeout(() => {
-        const d = document
-        const s = d.createElement('script')
-        s.setAttribute('id', 'embed-disqus')
-        s.setAttribute('data-timestamp', +new Date())
-        s.type = 'text/javascript'
-        s.async = true
-        s.src = `//${this.shortname}.disqus.com/embed.js`
-        ;(d.head || d.body).appendChild(s)
-      }, 0)
+      const d = document
+      const s = d.createElement('script')
+      s.setAttribute('id', 'embed-disqus')
+      s.setAttribute('data-timestamp', +new Date())
+      s.type = 'text/javascript'
+      s.async = true
+      s.src = `//${this.shortname}.disqus.com/embed.js`
+      ;(d.head || d.body).appendChild(s)
     },
 
     setBaseConfig (disqusConfig) {
@@ -138,7 +136,7 @@ export default {
     },
 
     cbDisqus (disqusConfig) {
-      callbacks.forEach(cb => {
+      CALLBACKS.forEach(cb => {
         disqusConfig.callbacks[cb] = [e => {
           this.$emit(getEmitName(cb), e)
         }]
