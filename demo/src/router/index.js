@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     name: 'post',
-    path: '/post/:id',
+    path: '/blog/:id',
     component: () => import('@/views/Post'),
     props: to => ({ post: to.meta.data }),
     meta: {

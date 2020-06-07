@@ -4,6 +4,10 @@
       {{ post.title }}
     </h1>
 
+    <section v-if="baseURI">
+      <DisqusCount ref="disqusCount" shortname="ktquez" tag="a" :url="baseURI" :identifier="$route.path" />
+    </section>
+
     <section>
       <p>
         {{ post.body }}
@@ -49,12 +53,14 @@
       <button @click="lang = (lang === 'en') ? 'it' : 'en'">Change disqus to {{ lang === 'en' ? 'ITALIAN' : 'ENGLISH' }} language</button>
       -
       <button @click="$refs.disqus.reset()">Reset disqus</button>
+      -
+      <button @click="$refs.disqusCount.reset()">Reset count comments</button>
     </section>
 
     <hr>
 
     <section>
-      <VueDisqus
+      <Disqus
         ref="disqus"
         shortname="ktquez"
         :lang="lang"
@@ -65,24 +71,20 @@
 </template>
 
 <script>
-import VueDisqus from '../../vue-disqus'
-
 export default {
   name: 'Post',
 
   props: ['post'],
 
-  components: {
-    VueDisqus
-  },
-
   data: () => ({
-    lang: 'en'
+    lang: 'en',
+    baseURI: document.baseURI
   }),
 
   methods: {
     newComment (e) {
       console.log(e)
+      this.$refs.disqusCount.reset()
     }
   }
 }
