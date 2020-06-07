@@ -9,16 +9,16 @@
 </template>
 
 <script>
+import { draf } from './utils'
+
 export default {
   name: 'DisqusCount',
 
   inheritAttrs: false,
 
   props: {
-    shortname: {
-      type: String,
-      required: true
-    },
+    url: String,
+    shortname: String,
     identifier: {
       type: String,
       required: true
@@ -26,8 +26,7 @@ export default {
     tag: {
       type: String,
       default: 'span'
-    },
-    url: String
+    }
   },
 
   mounted () {
@@ -40,14 +39,19 @@ export default {
     },
     getUrl () {
       return this.tag === 'span' ? this.url : null
+    },
+    getShortname () {
+      const shortname = this.shortname || (this.$disqus) ? this.$disqus.shortname : null
+      if (!shortname) throw new Error('Disqus shortname is required. (To resolve this, go to: https://ktquez.github.io/vue-disqus/guide/#installation)')
+      return shortname
     }
   },
 
   methods: {
     init () {
-      if ('DISQUSWIDGETS' in window) return this.reset()
+      if ('DISQUSWIDGETS' in window) return draf(() => this.reset())
       this.loadCountScript()
-      if (this.$route) this.$watch('$route.path', () => this.reset())
+      if (this.$route) this.$watch('$route.path', () => draf(() => this.reset()))
     },
 
     reset (dsqwg = window.DISQUSWIDGETS) {
@@ -55,11 +59,12 @@ export default {
     },
 
     loadCountScript () {
+      if (document.getElementById('dsq-count-scr')) return
       const d = document
       const s = d.createElement('script')
       s.async = true
       s.id = 'dsq-count-scr'
-      s.src = `//${this.shortname}.disqus.com/count.js`
+      s.src = `//${this.getShortname}.disqus.com/count.js`
       ;(d.head || d.body).appendChild(s)
     }
   }

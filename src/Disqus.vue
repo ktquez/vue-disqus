@@ -14,22 +14,18 @@ export default {
   name: 'Disqus',
 
   props: {
-    shortname: {
-      type: String,
-      required: true
-    },
+    shortname: String,
     pageConfig: {
       type: Object,
-      required: false,
       validator: config => Object.keys(config).every(key => PAGE_CONFIG_KEYS.includes(key))
     },
     ssoConfig: {
       type: Object,
-      required: false,
       validator: config => Object.keys(config).every(key => SSO_KEYS.includes(key))
     },
     lang: {
-      type: String
+      type: String,
+      default: 'en'
     },
     lazy: {
       type: Boolean,
@@ -48,6 +44,14 @@ export default {
   data: () => ({
     observer: null
   }),
+
+  computed: {
+    getShortname () {
+      const shortname = this.shortname || (this.$disqus) ? this.$disqus.shortname : null
+      if (!shortname) throw new Error('Disqus shortname is required. (To resolve this, go to: https://ktquez.github.io/vue-disqus/guide/#installation)')
+      return shortname
+    }
+  },
 
   watch: {
     lang () {
@@ -105,7 +109,7 @@ export default {
       s.setAttribute('data-timestamp', +new Date())
       s.type = 'text/javascript'
       s.async = true
-      s.src = `//${this.shortname}.disqus.com/embed.js`
+      s.src = `//${this.getShortname}.disqus.com/embed.js`
       ;(d.head || d.body).appendChild(s)
     },
 
@@ -117,9 +121,7 @@ export default {
         Object.assign(disqusConfig.sso, this.ssoConfig)
       }
 
-      if (this.lang) {
-        disqusConfig.language = this.lang
-      }
+      disqusConfig.language = this.lang
     },
 
     setPageConfig (disqusConfig) {
