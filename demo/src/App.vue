@@ -4,7 +4,7 @@
       <router-link to="/blog/1">Post 1</router-link> |
       <router-link to="/blog/2">Post 2</router-link> |
       <router-link to="/blog/2?fbclid=khbkhbkh">Post 2 with query</router-link> |
-      <a href="/blog/4">Post (testing the lazy load disqus)</a>
+      <a href="/blog/3">Post 3 (testing the lazy load disqus)</a>
     </div>
     <router-view/>
   </div>

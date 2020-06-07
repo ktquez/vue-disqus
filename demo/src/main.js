@@ -3,7 +3,9 @@ import App from './App.vue'
 import router from './router'
 import VueDisqus from '../vue-disqus'
 
-Vue.use(VueDisqus)
+Vue.use(VueDisqus, {
+  shortname: 'ktquez'
+})
 Vue.config.productionTip = false
 
 new Vue({

@@ -5,7 +5,12 @@
     </h1>
 
     <section v-if="baseURI">
-      <DisqusCount ref="disqusCount" shortname="ktquez" tag="a" :url="baseURI" :identifier="$route.path" />
+      <DisqusCount
+        tag="a"
+        v-text="'0 comments'"
+        :url="baseURI"
+        :identifier="$route.path"
+      />
     </section>
 
     <section>
@@ -53,8 +58,6 @@
       <button @click="lang = (lang === 'en') ? 'it' : 'en'">Change disqus to {{ lang === 'en' ? 'ITALIAN' : 'ENGLISH' }} language</button>
       -
       <button @click="$refs.disqus.reset()">Reset disqus</button>
-      -
-      <button @click="$refs.disqusCount.reset()">Reset count comments</button>
     </section>
 
     <hr>
@@ -62,7 +65,6 @@
     <section>
       <Disqus
         ref="disqus"
-        shortname="ktquez"
         :lang="lang"
         @new-comment="newComment"
       />
@@ -84,7 +86,6 @@ export default {
   methods: {
     newComment (e) {
       console.log(e)
-      this.$refs.disqusCount.reset()
     }
   }
 }
