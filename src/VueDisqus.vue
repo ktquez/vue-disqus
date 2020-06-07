@@ -126,7 +126,7 @@ export default {
 
     setPageConfig (disqusConfig) {
       const defaultConfig = {
-        url: this.$el.baseURI,
+        url: document.baseURI,
         identifier: (this.$route.path || window.location.pathname)
       }
 
