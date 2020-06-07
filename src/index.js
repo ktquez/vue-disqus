@@ -1,4 +1,6 @@
-import VueDisqus from './VueDisqus.vue'
+import VueDisqus from './plugin'
 
 export default VueDisqus
-export { default as VueDisqusPlugin } from './plugin'
+
+export { default as Disqus } from './Disqus.vue'
+export { default as DisqusCount } from './DisqusCount.vue'

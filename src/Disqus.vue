@@ -11,7 +11,7 @@ import {
 import { getEmitName } from './utils'
 
 export default {
-  name: 'VueDisqus',
+  name: 'Disqus',
 
   props: {
     shortname: {
@@ -67,7 +67,7 @@ export default {
       window.disqus_config = function () {
         setBaseConfig(this)
       }
-      this.makeEmbedScript()
+      this.loadEmbedScript()
       if (this.$route) this.$watch('$route.path', () => this.reset())
     },
 
@@ -98,7 +98,7 @@ export default {
       })
     },
 
-    makeEmbedScript () {
+    loadEmbedScript () {
       const d = document
       const s = d.createElement('script')
       s.setAttribute('id', 'embed-disqus')
