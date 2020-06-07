@@ -54,7 +54,12 @@
     <hr>
 
     <section>
-      <VueDisqus ref="disqus" shortname="ktquez" :lang="lang" @new-comment="newComment" />
+      <VueDisqus
+        ref="disqus"
+        shortname="ktquez"
+        :lang="lang"
+        @new-comment="newComment"
+      />
     </section>
   </article>
 </template>

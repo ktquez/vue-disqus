@@ -17,6 +17,9 @@
     "demo:dev": "cd demo && npm run serve",
     "demo:build": "cd demo && npm run build",
     "demo:publish": "surge ./demo/dist https://vue-disqus.surge.sh/",
+    "docs:dev": "./node_modules/.bin/vuepress dev docs --no-cache",
+    "docs:build": "./node_modules/.bin/vuepress build docs --no-cache",
+    "docs:publish": "gh-pages -d docs/.vuepress/dist",
     "release": "standard-version",
     "test:unit": "jest",
     "test:e2e": "node_modules/.bin/cypress run --headless",
@@ -60,6 +63,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.2.2",
     "eslint-plugin-vuejs-accessibility": "^0.1.3",
+    "gh-pages": "^3.0.0",
     "jest": "^26.0.1",
     "rollup": "^2.13.1",
     "rollup-plugin-eslint": "^7.0.0",
@@ -68,6 +72,9 @@
     "standard-version": "^8.0.0",
     "surge": "^0.21.3",
     "vue": "^2.6.11",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.5.0",
+    "vuepress-theme-default-vue-a11y": "^0.1.11",
+    "watchpack": "^1.6.1"
   }
 }
