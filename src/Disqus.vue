@@ -67,7 +67,12 @@ export default {
 
   methods: {
     init () {
-      if (window.DISQUS) return this.reset()
+      if (this.$disqus) {
+        this.$disqus.reset = this.reset
+      }
+      if (window.DISQUS) {
+        return this.reset()
+      }
       const setBaseConfig = this.setBaseConfig
       window.disqus_config = function () {
         setBaseConfig(this)

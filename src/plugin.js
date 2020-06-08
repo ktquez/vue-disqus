@@ -6,7 +6,8 @@ export default function install (Vue, options = {}) {
   Vue.component('DisqusCount', DisqusCount)
 
   Vue.prototype.$disqus = {
-    shortname: options.shortname || null
+    shortname: options.shortname || null,
+    reset: null
   }
 }
 
