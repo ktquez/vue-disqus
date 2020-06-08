@@ -1,6 +1,26 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [4.0.0](https://github.com/ktquez/vue-disqus/compare/v3.0.5...v4.0.0) (2020-06-08)
+
+
+### Features
+
+* Add documentation by Vuepress Vue a11y theme ([9513899](https://github.com/ktquez/vue-disqus/commit/95138994946f8e6b319d561b416c718c75f4f0ad))
+* Add lazy load ([ac70f97](https://github.com/ktquez/vue-disqus/commit/ac70f97768fc20ea9dd5d3be8832275369a15353))
+* Add reset embed in $disqus ([bfd89f6](https://github.com/ktquez/vue-disqus/commit/bfd89f65d6779e29940d938722713acfa50ba92f))
+* Add types ([7d44da8](https://github.com/ktquez/vue-disqus/commit/7d44da87c9d98d758226099b0eb7c6b1ff865b2e))
+* Added Disqus and DisqusCount components ([d50e0c5](https://github.com/ktquez/vue-disqus/commit/d50e0c54d5ad4c633c68924c4e9d0df1cee8d4af))
+* Emit callback events ([f511016](https://github.com/ktquez/vue-disqus/commit/f5110169fbb00d25d8c00944670fd8ed561e5c5e))
+* Set shortname globally ([54cc1e2](https://github.com/ktquez/vue-disqus/commit/54cc1e2c1baca5a587b058b0839a8f79e91925f7))
+* Support to page and sso props with validator and reset when update language ([0b5e48b](https://github.com/ktquez/vue-disqus/commit/0b5e48ba3766c295cce4a0af5f73e8497851f028))
+
+
+### Bug Fixes
+
+* getShortname computed ([0eb76e4](https://github.com/ktquez/vue-disqus/commit/0eb76e45ed9b60cf36b3979b94a5500a6fed049e))
+* reset component when change route ([e261c94](https://github.com/ktquez/vue-disqus/commit/e261c947018e5e5128a70e94cc0345ed086d54d0))
 
 <a name="3.0.5"></a>
 ## [3.0.5](https://github.com/ktquez/vue-disqus/compare/v3.0.4...v3.0.5) (2018-10-01)
