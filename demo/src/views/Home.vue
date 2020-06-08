@@ -47,7 +47,7 @@ export default {
     async loadPosts () {
       this.loading = true
       try {
-        const res = await fetch('https://cors-anywhere.herokuapp.com/https://jsonplaceholder.typicode.com/posts?_limit=4')
+        const res = await fetch('/posts.json')
         if (!res.ok) throw new Error('Error load post')
         this.posts = await res.json()
         this.loading = false

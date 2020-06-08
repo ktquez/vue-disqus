@@ -17,12 +17,12 @@ const routes = [
     meta: {
       fetch (id) {
         return new Promise((resolve, reject) => {
-          fetch(`https://cors-anywhere.herokuapp.com/https://jsonplaceholder.typicode.com/posts/${id}`)
+          fetch('/posts.json')
             .then(res => {
               if (res.ok) return res.json()
               throw new Error('Post not exists')
             })
-            .then(resolve)
+            .then(res => resolve(res[(id - 1)]))
             .catch(reject)
         })
       }

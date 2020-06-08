@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Post title one",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis neque et tellus efficitur sagittis. Praesent volutpat dui sed vehicula tristique. Donec magna augue, scelerisque varius arcu et, ullamcorper faucibus arcu. Nam ut nisi tortor. Pellentesque vestibulum varius nisl, non ullamcorper leo laoreet id. Donec quis molestie purus. Nullam dignissim dignissim ex, id sollicitudin justo venenatis porttitor."
+  },
+  {
+    "id": 2,
+    "title": "Post title two",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis neque et tellus efficitur sagittis. Praesent volutpat dui sed vehicula tristique. Donec magna augue, scelerisque varius arcu et, ullamcorper faucibus arcu. Nam ut nisi tortor. Pellentesque vestibulum varius nisl, non ullamcorper leo laoreet id. Donec quis molestie purus. Nullam dignissim dignissim ex, id sollicitudin justo venenatis porttitor."
+  },
+  {
+    "id": 3,
+    "title": "Post title three",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis neque et tellus efficitur sagittis. Praesent volutpat dui sed vehicula tristique. Donec magna augue, scelerisque varius arcu et, ullamcorper faucibus arcu. Nam ut nisi tortor. Pellentesque vestibulum varius nisl, non ullamcorper leo laoreet id. Donec quis molestie purus. Nullam dignissim dignissim ex, id sollicitudin justo venenatis porttitor."
+  },
+  {
+    "id": 4,
+    "title": "Post title four",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis neque et tellus efficitur sagittis. Praesent volutpat dui sed vehicula tristique. Donec magna augue, scelerisque varius arcu et, ullamcorper faucibus arcu. Nam ut nisi tortor. Pellentesque vestibulum varius nisl, non ullamcorper leo laoreet id. Donec quis molestie purus. Nullam dignissim dignissim ex, id sollicitudin justo venenatis porttitor."
+  }
+]
