@@ -1,10 +1,5 @@
-import VueDisqus from "./vue-disqus.vue"
+import VueDisqus from './plugin'
 
-export default function install (Vue) {
-  Vue.component('VueDisqus', VueDisqus)
-}
-
-// auto install
-if (typeof window !== 'undefined' && typeof window.Vue !== 'undefined') {
-  window.Vue.use(install)
-}
+export default VueDisqus
+export { default as Disqus } from './Disqus.vue'
+export { default as DisqusCount } from './DisqusCount.vue'
