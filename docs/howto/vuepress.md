@@ -11,7 +11,7 @@ If you are not using the `@vuepress/plugin-blog`, you can use VueDisqus normally
 ```vue
 <template>
   <div>
-    <!-- ommited -->
+    <!-- omitted -->
     <div class='comments'>
       <Disqus shortname='your_shortname_disqus' />
     </div>
@@ -36,7 +36,19 @@ Or importing globally into your `enhanceApp.js`
 import VueDisqus from 'vue-disqus'
 
 export default ({ Vue }) => {
-  Vue.use(VueDisqus)
+  Vue.use(VueDisqus, {
+    shortname: 'your_shortname_disqus'
+  })
 }
 ```
 
+```vue
+<template>
+  <div>
+    <!-- omitted -->
+    <div class='comments'>
+      <Disqus />
+    </div>
+  </div>
+</template>
+```

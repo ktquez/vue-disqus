@@ -38,7 +38,3 @@ If you want a faster communication, find me on twitter [@ktquez](https://twitter
 ## License
 
 VueDisqus is open-sourced package licensed under the [MIT](https://github.com/ktquez/vue-disqus/blob/master/LICENSE) license
-
----
-
-**Thank you for using**

@@ -4,9 +4,11 @@ Create plugin file `plugins/disqus.js`
 
 ```js
 import Vue from 'vue'
-import { VueDisqusPlugin } from 'vue-disqus'
+import VueDisqus from 'vue-disqus'
 
-Vue.use(VueDisqusPlugin)
+Vue.use(VueDisqus, {
+  shortname: 'your_shortname_disqus'
+})
 ```
 
 In config file `nuxt.config.js`
@@ -23,7 +25,7 @@ Using in Vue file components
 ```vue
 <template>
   <div class="comments">
-    <Disqus shortname="your_shortname_disqus" />
+    <Disqus />
   </div>
 </template>
 ```

@@ -1,4 +1,4 @@
-# Getting Started
+# Setup
 
 ## Installation
 
@@ -8,17 +8,33 @@ $ npm install -s vue-disqus
 $ yarn add vue-disqus
 ```
 
-## Setup
+## Using
+
+### Globally
 You can use it globally in your `main.js`
 
 ```js
 import Vue from 'vue'
 import VueDisqus from 'vue-disqus'
 
-Vue.use(VueDisqus)
+Vue.use(VueDisqus, {
+  shortname: 'your-shortname-disqus'
+})
 ```
 
-or you can import into your component:
+Using the component in the template
+
+```vue
+<template>
+  <div class='comments'>
+    <Disqus />
+  </div>
+</template>
+```
+
+### Locally
+
+You can import into your component:
 
 ```vue
 <script>
@@ -34,8 +50,6 @@ export default {
 </script>
 ```
 
-## Usage 
-
 Using the component in the template
 
 ```vue
@@ -45,3 +59,7 @@ Using the component in the template
   </div>
 </template>
 ```
+
+::: warning
+Shortname is required when using locally component
+:::

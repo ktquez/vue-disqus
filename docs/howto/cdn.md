@@ -12,7 +12,7 @@ You can use `vue-disqus` easily through CDN.
 <div id="app">
   <!-- code -->
   <div class="comments">
-    <vue-disqus shortname="your_shortname_disqus"></vue-disqus>
+    <disqus shortname="your_shortname_disqus"></disqus>
   </div>
 </div>
 ```

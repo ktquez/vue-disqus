@@ -13,13 +13,11 @@ module.exports = {
         editLinkText: 'Edit this page on GitHub',
         sidebar: [
           {
-            title: 'Guide',
+            title: 'Getting Started',
             collapsable: false,
             children: [
               '/',
-              '/guide/',
-              '/guide/props.md',
-              '/guide/callbacks.md'
+              '/setup.md',
             ]
           },
           {
