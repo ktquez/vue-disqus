@@ -14,7 +14,7 @@ Comment count link text can be customized at your [Disqus Admin](https://ktquez.
     <!-- ... -->
     <card-post>
       <h2>My awesome post</h2>
-      <a href="" title="See my awesome post">
+      <a href="https://example.com/blog/my-awesome-post" title="See my awesome post">
         See my awesome post
       </a>
       <div>
