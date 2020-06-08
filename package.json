@@ -8,6 +8,7 @@
   "browser": {
     "./sfc": "src/vue-disqus.vue"
   },
+  "types": "index.d.ts",
   "scripts": {
     "dev": "rollup --config rollup.config.dev.js --watch",
     "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
