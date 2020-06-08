@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { ERROR_SHORTNAME_REQUIRED } from './constants'
 import { draf } from './utils'
 
 export default {
@@ -42,7 +43,7 @@ export default {
     },
     getShortname () {
       const shortname = this.shortname ? this.shortname : this.$disqus ? this.$disqus.shortname : null
-      if (!shortname) throw new Error('Disqus shortname is required. (To resolve this, go to: https://ktquez.github.io/vue-disqus/guide/#installation)')
+      if (!shortname) throw new Error(ERROR_SHORTNAME_REQUIRED)
       return shortname
     }
   },

@@ -6,7 +6,8 @@
 import {
   SSO_KEYS,
   CALLBACKS,
-  PAGE_CONFIG_KEYS
+  PAGE_CONFIG_KEYS,
+  ERROR_SHORTNAME_REQUIRED
 } from './constants'
 import { getEmitName } from './utils'
 
@@ -48,7 +49,7 @@ export default {
   computed: {
     getShortname () {
       const shortname = this.shortname ? this.shortname : this.$disqus ? this.$disqus.shortname : null
-      if (!shortname) throw new Error('Disqus shortname is required. (To resolve this, go to: https://ktquez.github.io/vue-disqus/guide/#installation)')
+      if (!shortname) throw new Error(ERROR_SHORTNAME_REQUIRED)
       return shortname
     }
   },
