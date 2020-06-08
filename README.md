@@ -15,14 +15,8 @@ Vue component to integrate Disqus comments in your application [Vue.js](http://v
 
 ## Support me
 
-<a href="https://www.buymeacoffee.com/ktquez" target="_blank" aria-label="Buy Me A Coffee">
-  <img src="https://cdn.buymeacoffee.com/buttons/lato-black.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" >
-</a>
-
-<br>
-
 <a href="https://ko-fi.com/O5O31PRAX" target="_blank" aria-label="Support me on Ko-fi">
-  <img src="https://www.ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" style="height: 51px !important;width: 217px !important;" >
+  <img src="https://www.ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" style="width: 217px !important;" >
 </a>
 
 <br> 
