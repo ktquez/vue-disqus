@@ -5,7 +5,12 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    name: 'post',
+    name: 'home',
+    path: '/',
+    component: () => import('@/views/Home')
+  },
+  {
+    name: 'blog',
     path: '/blog/:id',
     component: () => import('@/views/Post'),
     props: to => ({ post: to.meta.data }),

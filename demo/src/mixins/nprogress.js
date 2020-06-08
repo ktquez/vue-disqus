@@ -8,12 +8,12 @@ export default {
     })
 
     this.$router.beforeEach((to, from, next) => {
-      nprogress.start()
+      if (nprogress) nprogress.start()
       next()
     })
 
     this.$router.afterEach(() => {
-      nprogress.done()
+      if (nprogress) nprogress.done()
     })
   }
 }
