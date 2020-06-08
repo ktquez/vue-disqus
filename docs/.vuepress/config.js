@@ -18,6 +18,7 @@ module.exports = {
             children: [
               '/',
               '/setup.md',
+              '/reset.md'
             ]
           },
           {
