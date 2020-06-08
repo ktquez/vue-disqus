@@ -47,7 +47,7 @@ export default {
 
   computed: {
     getShortname () {
-      const shortname = this.shortname || (this.$disqus) ? this.$disqus.shortname : null
+      const shortname = this.shortname ? this.shortname : this.$disqus ? this.$disqus.shortname : null
       if (!shortname) throw new Error('Disqus shortname is required. (To resolve this, go to: https://ktquez.github.io/vue-disqus/guide/#installation)')
       return shortname
     }
