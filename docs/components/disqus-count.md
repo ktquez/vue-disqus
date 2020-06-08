@@ -4,6 +4,10 @@
 
 You can import the `DisqusCount` component individually.
 
+::: tip
+Comment count link text can be customized at your [Disqus Admin](https://ktquez.disqus.com/admin/settings/community/)
+:::
+
 ```vue
 <template>
   <div>
