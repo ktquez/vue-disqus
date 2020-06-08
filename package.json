@@ -17,7 +17,7 @@
     "build:unpkg": "rollup --config rollup.config.prod.js --format iife --file dist/vue-disqus.min.js",
     "demo:dev": "cd demo && npm run serve",
     "demo:build": "cd demo && npm run build",
-    "demo:publish": "surge ./demo/dist https://vue-disqus.surge.sh/",
+    "demo:publish": "cp ./demo/dist/index.html ./demo/dist/200.html && surge ./demo/dist https://vue-disqus.surge.sh/",
     "docs:dev": "./node_modules/.bin/vuepress dev docs --no-cache",
     "docs:build": "./node_modules/.bin/vuepress build docs --no-cache",
     "docs:publish": "gh-pages -d docs/.vuepress/dist",
