@@ -48,7 +48,7 @@
     <section>
       <button @click="lang = (lang === 'en') ? 'it' : 'en'">Change disqus to {{ lang === 'en' ? 'ITALIAN' : 'ENGLISH' }} language</button>
       -
-      <button @click="$refs.disqus.reset()">Reset disqus</button>
+      <button @click="$disqus.reset()">Reset disqus</button>
     </section>
 
     <hr>
