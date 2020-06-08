@@ -5,7 +5,7 @@ module.exports = {
   description: 'Vue component to integrate Disqus comments in your application, with support for SPA',
   themeConfig: {
     home: false,
-    repo: 'vue-a11y/eslint-plugin-vuejs-accessibility',
+    repo: 'ktquez/vue-disqus',
     docsDir: 'docs',
     docsBranch: 'master',
     editLinks: true,
