@@ -3,6 +3,10 @@ module.exports = {
   theme: 'default-vue-a11y',
   title: 'Vue Disqus',
   description: 'Vue component to integrate Disqus comments in your application, with support for SPA',
+  head: [
+    ['meta', { name: 'theme-color', content: '#fff' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }]
+  ],
   themeConfig: {
     home: false,
     repo: 'ktquez/vue-disqus',

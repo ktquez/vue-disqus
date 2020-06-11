@@ -27,10 +27,11 @@ export default {
 
   methods: {
     toggleTheme () {
-      this.theme = 'dark'
-      this.$disqus.reset() // If VueDisqus installed using Vue.use
-      // OR
-      this.$refs.disqus.reset() // If Disqus component registered locally
+      // Update theme here
+
+      this.$disqus.reset() // Use this if VueDisqus was installed with Vue.use
+      
+      // Note: Use "this.$refs.disqus.reset()" if Disqus component was registered locally
     },
     newComment (e) {
       console.log(e)
