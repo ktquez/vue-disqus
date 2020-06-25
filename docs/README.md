@@ -21,13 +21,11 @@ Vue component to integrate Disqus comments in your application, with support for
 
 <br> 
 
-<a href="https://www.buymeacoffee.com/ktquez" target="_blank" aria-label="Buy Me A Coffee">
-  <img src="https://cdn.buymeacoffee.com/buttons/lato-black.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" >
+<a href="https://www.buymeacoffee.com/ktquez" target="_blank" rel="noopener" aria-label="Buy Me A Coffee">
+  <img src="https://cdn.buymeacoffee.com/buttons/lato-black.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important; border-radius: 10px;" >
 </a>
 
-<br> 
-
-<a href="https://ko-fi.com/O5O31PRAX" target="_blank" aria-label="Support me on Ko-fi">
+<a href="https://ko-fi.com/O5O31PRAX" target="_blank" rel="noopener" aria-label="Support me on Ko-fi" style="display: inline-block; background-color: #ff5e5b; border-radius: 10px; height: 51px;">
   <img src="https://www.ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" style="height: 51px !important;width: 217px !important;" >
 </a>
 
