@@ -75,7 +75,7 @@
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.5.0",
-    "vuepress-theme-default-vue-a11y": "^0.1.13",
+    "vuepress-theme-default-vue-a11y": "^0.1.15",
     "watchpack": "^1.6.1"
   }
 }
