@@ -133,7 +133,7 @@ export default {
     setPageConfig (disqusConfig) {
       const defaultConfig = {
         url: document.baseURI,
-        identifier: (this.$route.path || window.location.pathname)
+        identifier: this.$route ? this.$route.path : window.location.pathname
       }
 
       Object.assign(disqusConfig.page, defaultConfig)
