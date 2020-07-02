@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/ktquez/vue-disqus/compare/v4.0.0...v4.0.1) (2020-07-02)
+
+
+### Bug Fixes
+
+* Check if the router object exists when setting the default identifier ([11859f7](https://github.com/ktquez/vue-disqus/commit/11859f7c41034dfbd656d0c84b4012a5776069d3))
+
 ## [4.0.0](https://github.com/ktquez/vue-disqus/compare/v3.0.5...v4.0.0) (2020-06-08)
 
 
