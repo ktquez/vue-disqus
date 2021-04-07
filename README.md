@@ -1,27 +1,35 @@
-# Vue 3 + Typescript + Vite
+# vue-disqus for Vue 3
 
-This template should help get you started developing with Vue 3 and Typescript in Vite.
+---
+🔥 WORKING IN PROGRESS
 
-## Recommended IDE Setup
+🔥 HEADS UP! You are in the Vue 3 compatible branch, [check the branch for Vue 2 support](https://github.com/ktquez/vue-disqus).
 
-[VSCode](https://code.visualstudio.com/) + [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur). Make sure to enable `vetur.experimental.templateInterpolationService` in settings!
+---
 
-### If Using `<script setup>`
+Vue component to integrate Disqus comments in your application [Vue.js](http://vuejs.org/), with support for SPA and Vue 2.*
 
-[`<script setup>`](https://github.com/vuejs/rfcs/pull/227) is a feature that is currently in RFC stage. To get proper IDE support for the syntax, use [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) instead of Vetur (and disable Vetur).
+## Links
 
-## Type Support For `.vue` Imports in TS
+- [Documentation](https://ktquez.github.io/vue-disqus)
+- [Demo](https://vue-disqus.surge.sh/)
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can use the following:
+## Contributing
 
-### If Using Volar
+- Check the open issues or open a new issue to start a discussion around your feature idea or the bug you found;
+- Fork repository, make changes, add your name and link in the authors session CONTRIBUTING.md;
+- Send a pull request;
 
-Run `Volar: Switch TS Plugin on/off` from VSCode command palette.
+## Support me
 
-### If Using Vetur
+<a href="https://ko-fi.com/O5O31PRAX" target="_blank" aria-label="Support me on Ko-fi">
+  <img src="https://www.ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" style="width: 217px !important;" >
+</a>
 
-1. Install and add `@vuedx/typescript-plugin-vue` to the [plugins section](https://www.typescriptlang.org/tsconfig#plugins) in `tsconfig.json`
-2. Delete `src/shims-vue.d.ts` as it is no longer needed to provide module info to Typescript
-3. Open `src/main.ts` in VSCode
-4. Open the VSCode command palette
-5. Search and run "Select TypeScript version" -> "Use workspace version"
+<br> 
+
+If you want a faster communication, find me on [@ktquez](https://twitter.com/ktquez)
+
+## License
+
+VueDisqus is open-sourced package licensed under the [MIT](https://github.com/ktquez/vue-disqus/blob/master/LICENSE) license
