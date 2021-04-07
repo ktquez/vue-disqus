@@ -8,11 +8,13 @@
   />
 </template>
 
-<script>
+<script type="ts">
+import { defineComponent } from 'vue'
+
 import { ERROR_SHORTNAME_REQUIRED } from './constants'
 import { draf } from './utils'
 
-export default {
+export default defineComponent({
   name: 'DisqusCount',
 
   inheritAttrs: false,
@@ -69,5 +71,5 @@ export default {
       ;(d.head || d.body).appendChild(s)
     }
   }
-}
+})
 </script>

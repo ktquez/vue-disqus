@@ -2,16 +2,19 @@
   <div id="disqus_thread" style="min-height: 200px" />
 </template>
 
-<script>
+<script type="ts">
+import { defineComponent } from 'vue'
+
 import {
   SSO_KEYS,
   CALLBACKS,
   PAGE_CONFIG_KEYS,
   ERROR_SHORTNAME_REQUIRED
 } from './constants'
+
 import { getEmitName } from './utils'
 
-export default {
+export default defineComponent({
   name: 'Disqus',
 
   props: {
@@ -133,7 +136,7 @@ export default {
     setPageConfig (disqusConfig) {
       const defaultConfig = {
         url: document.baseURI,
-        identifier: (this.$route.path || window.location.pathname)
+        identifier: this.$route ? this.$route.path : window.location.pathname
       }
 
       Object.assign(disqusConfig.page, defaultConfig)
@@ -151,5 +154,5 @@ export default {
       })
     }
   }
-}
+})
 </script>
