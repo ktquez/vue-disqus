@@ -2,15 +2,11 @@
   <div id="disqus_thread" style="min-height: 200px" />
 </template>
 
-<script type="ts">
-import { defineComponent } from 'vue'
+<script lang="ts">
+import { computed, defineComponent, inject, onMounted, ref, watch, getCurrentInstance, Ref } from 'vue'
 
-import {
-  SSO_KEYS,
-  CALLBACKS,
-  PAGE_CONFIG_KEYS,
-  ERROR_SHORTNAME_REQUIRED
-} from './constants'
+import * as CONSTANTS from './constants'
+import { DisqusConfig, VueDisqusInstance } from './types'
 
 import { getEmitName } from './utils'
 
@@ -21,11 +17,11 @@ export default defineComponent({
     shortname: String,
     pageConfig: {
       type: Object,
-      validator: config => Object.keys(config).every(key => PAGE_CONFIG_KEYS.includes(key))
+      validator: (config: any) => Object.keys(config).every(key => CONSTANTS.PAGE_CONFIG_KEYS.includes(key))
     },
     ssoConfig: {
       type: Object,
-      validator: config => Object.keys(config).every(key => SSO_KEYS.includes(key))
+      validator: (config: any) => Object.keys(config).every(key => CONSTANTS.SSO_KEYS.includes(key))
     },
     lang: {
       type: String,
@@ -45,114 +41,109 @@ export default defineComponent({
     }
   },
 
-  data: () => ({
-    observer: null
-  }),
+  setup (props, { emit }) {
+    const $disqus = <VueDisqusInstance>inject(CONSTANTS.DISQUS_CONFIG_KEY)
+    const instance = getCurrentInstance()
+    const observer = <Ref<IntersectionObserver|null>>ref(null)
+    const currentRoute = ref(window.location.pathname)
 
-  computed: {
-    getShortname () {
-      const shortname = this.shortname ? this.shortname : this.$disqus ? this.$disqus.shortname : null
-      if (!shortname) throw new Error(ERROR_SHORTNAME_REQUIRED)
+    const getShortname = computed(() => {
+      const shortname = props.shortname || $disqus.shortname
+      if (!shortname) throw new Error(CONSTANTS.ERROR_SHORTNAME_REQUIRED)
       return shortname
-    }
-  },
+    })
 
-  watch: {
-    lang () {
-      this.reset()
-    }
-  },
+    watch(() => props.lang, reset)
 
-  mounted () {
-    if (this.lazy) return this.observerDisqus()
-    this.init()
-  },
+    onMounted(() => {
+      if (props.lazy) return observerDisqus()
+      init()
+    })
 
-  methods: {
-    init () {
-      if (this.$disqus) {
-        this.$disqus.reset = this.reset
+    function init () {
+      if ($disqus) {
+        $disqus.reset = reset
       }
       if (window.DISQUS) {
-        return this.reset()
+        return reset()
       }
-      const setBaseConfig = this.setBaseConfig
-      window.disqus_config = function () {
+      (<any>window).disqus_config = function () {
         setBaseConfig(this)
       }
-      this.loadEmbedScript()
-      if (this.$route) this.$watch('$route.path', () => this.reset())
-    },
-
-    reset (dsq = window.DISQUS) {
-      const setBaseConfig = this.setBaseConfig
-      dsq.reset({
+      loadEmbedScript()
+      watch(() => currentRoute.value, reset)
+    }
+    
+    function reset (): void {
+      window.DISQUS.reset({
         reload: true,
         config: function () {
           setBaseConfig(this)
         }
       })
-    },
+    }
 
-    observerDisqus () {
+    function observerDisqus () {
       if ('IntersectionObserver' in window) {
-        this.observer = new IntersectionObserver(this.handleObserver, this.lazyConfig)
-        return this.observer.observe(this.$el)
+        observer.value = new IntersectionObserver(handleObserver, props.lazyConfig)
+        return observer.value.observe(instance?.proxy?.$el)
       }
-      this.init()
-    },
+      init()
+    }
 
-    handleObserver (entries) {
+    function handleObserver (entries: IntersectionObserverEntryInit[]) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          this.observer.disconnect()
-          this.init()
+          observer.value?.disconnect()
+          init()
         }
       })
-    },
+    }
 
-    loadEmbedScript () {
+    function loadEmbedScript () {
+      const date = +new Date()
       const d = document
       const s = d.createElement('script')
       s.setAttribute('id', 'embed-disqus')
-      s.setAttribute('data-timestamp', +new Date())
+      s.setAttribute('data-timestamp', date.toString())
       s.type = 'text/javascript'
       s.async = true
-      s.src = `//${this.getShortname}.disqus.com/embed.js`
+      s.src = `//${getShortname.value}.disqus.com/embed.js`
       ;(d.head || d.body).appendChild(s)
-    },
+    }
 
-    setBaseConfig (disqusConfig) {
-      this.setPageConfig(disqusConfig)
-      this.cbDisqus(disqusConfig)
+    function setBaseConfig (disqusConfig: DisqusConfig) {
+      setPageConfig(disqusConfig)
+      cbDisqus(disqusConfig)
 
-      if (this.ssoConfig && Object.keys(this.ssoConfig).length) {
-        Object.assign(disqusConfig.sso, this.ssoConfig)
+      if (props.ssoConfig && Object.keys(props.ssoConfig).length) {
+        Object.assign(disqusConfig.sso, props.ssoConfig)
       }
 
-      disqusConfig.language = this.lang
-    },
+      disqusConfig.language = props.lang
+    }
 
-    setPageConfig (disqusConfig) {
+    function setPageConfig (disqusConfig: DisqusConfig) {
       const defaultConfig = {
         url: document.baseURI,
-        identifier: this.$route ? this.$route.path : window.location.pathname
+        identifier: window.location.pathname
       }
 
       Object.assign(disqusConfig.page, defaultConfig)
 
-      if (this.pageConfig && Object.keys(this.pageConfig).length) {
-        Object.assign(disqusConfig.page, this.pageConfig)
+      if (props.pageConfig && Object.keys(props.pageConfig).length) {
+        Object.assign(disqusConfig.page, props.pageConfig)
       }
-    },
+    }
 
-    cbDisqus (disqusConfig) {
-      CALLBACKS.forEach(cb => {
-        disqusConfig.callbacks[cb] = [e => {
-          this.$emit(getEmitName(cb), e)
+    function cbDisqus (disqusConfig: DisqusConfig) {
+      CONSTANTS.CALLBACKS.forEach(cb => {
+        disqusConfig.callbacks[cb] = [(e: any) => {
+          emit(getEmitName(cb), e)
         }]
       })
     }
+
   }
 })
 </script>
