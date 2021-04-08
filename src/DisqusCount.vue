@@ -8,7 +8,7 @@
   />
 </template>
 
-<script type="ts">
+<script lang="ts">
 import { defineComponent } from 'vue'
 
 import { ERROR_SHORTNAME_REQUIRED } from './constants'
