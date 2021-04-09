@@ -1,20 +1,17 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
-  <Disqus shortname="vue-disqus-test" />
+  <div>
+    <span>Comentários: </span>
+    <DisqusCount identifier="/blog/1" />
+  </div>
+  <Disqus />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { Disqus } from '../../src/index'
-import HelloWorld from './components/HelloWorld.vue'
 
 export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld,
-    Disqus
-  }
+  name: 'App'
 })
 </script>
 
