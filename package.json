@@ -15,11 +15,10 @@
     }
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "cd demo && vite",
     "build": "npm-run-all -s clean build:*",
     "build:vite": "vue-tsc --noEmit && vite build",
     "build:types": "tsc --emitDeclarationOnly",
-    "demo": "cd demo && vue-tsc --noEmit && vite",
     "clean": "rm -rf dist",
     "release": "standard-version",
     "project:publish": "git push --tags origin next && yarn build && npm publish --tag next"

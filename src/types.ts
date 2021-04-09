@@ -1,4 +1,5 @@
 import { CALLBACKS, PAGE_CONFIG_KEYS, SSO_KEYS } from './constants';
+import { App } from 'vue';
 
 type SSOKeys = typeof SSO_KEYS
 type PageConfigKeys = typeof PAGE_CONFIG_KEYS
@@ -34,9 +35,30 @@ export interface DisqusConfig {
   callbacks: DisqusConfigCallbacks;
 };
 
+interface Disqus {
+  host: {
+    _loadEmbed: (...args: any) => any;
+  }
+  request: {
+    get: (...args: any) => any;
+  }
+  reset: (...args: any) => any;
+  vglnk: (...args: any) => any;
+};
+
+interface DisqusWidgets {
+  displayCount: (...args: any) => any;
+  getCount: (...args: any) => any;
+  domain: string
+  forum: string
+  proto: string
+};
+
 declare global {
     interface Window {
-        DISQUS: any;
+        Vue: App,
+        DISQUS: Disqus;
+        DISQUSWIDGETS: DisqusWidgets;
         location: Location
     }
 }

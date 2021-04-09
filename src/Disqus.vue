@@ -74,7 +74,7 @@ export default defineComponent({
       watch(() => currentRoute.value, reset)
     }
     
-    function reset (): void {
+    function reset () {
       window.DISQUS.reset({
         reload: true,
         config: function () {

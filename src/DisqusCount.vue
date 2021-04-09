@@ -2,22 +2,25 @@
   <component
     class="disqus-comment-count"
     :is="tag"
-    :href="getHref"
-    :data-disqus-url="getUrl"
-    :data-disqus-identifier="identifier"
+    v-bind="disqusAttrs"
   />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent, inject, onMounted, ref, watch } from 'vue'
 
-import { ERROR_SHORTNAME_REQUIRED } from './constants'
+import * as CONSTANTS from './constants'
+import { VueDisqusInstance } from './types'
 import { draf } from './utils'
+
+interface DisqusCommentCountAttrs {
+  href: string;
+  'data-disqus-url'?: string|null;
+  'data-disqus-identifier': string;
+};
 
 export default defineComponent({
   name: 'DisqusCount',
-
-  inheritAttrs: false,
 
   props: {
     url: String,
@@ -32,43 +35,47 @@ export default defineComponent({
     }
   },
 
-  mounted () {
-    this.init()
-  },
-
-  computed: {
-    getHref () {
-      return this.tag === 'a' ? `${this.url}#disqus_thread` : null
-    },
-    getUrl () {
-      return this.tag === 'span' ? this.url : null
-    },
-    getShortname () {
-      const shortname = this.shortname ? this.shortname : this.$disqus ? this.$disqus.shortname : null
-      if (!shortname) throw new Error(ERROR_SHORTNAME_REQUIRED)
+  setup (props) {
+    const $disqus = <VueDisqusInstance>inject(CONSTANTS.DISQUS_CONFIG_KEY)
+    const currentRoute = ref(window.location.pathname)    
+    const getHref = computed(() => props.tag === 'a' ? `${props.url}#disqus_thread` : '#')
+    const getUrl = computed(() => props.tag === 'span' ? props.url : null)
+    const getShortname = computed(() => {
+      const shortname = props.shortname || $disqus ? $disqus.shortname : null
+      if (!shortname) throw new Error(CONSTANTS.ERROR_SHORTNAME_REQUIRED)
       return shortname
+    })
+
+    const disqusAttrs: DisqusCommentCountAttrs = {
+      href: getHref.value,
+      'data-disqus-url': getUrl.value,
+      'data-disqus-identifier': props.identifier
     }
-  },
 
-  methods: {
-    init () {
-      if ('DISQUSWIDGETS' in window) return draf(() => this.reset())
-      this.loadCountScript()
-      if (this.$route) this.$watch('$route.path', () => draf(() => this.reset()))
-    },
+    onMounted(init)
+    
+    function init () {
+      if ('DISQUSWIDGETS' in window) return draf(() => reset())
+      loadCountScript()
+      watch(() => currentRoute.value, () => draf(() => reset()))
+    }
 
-    reset (dsqwg = window.DISQUSWIDGETS) {
-      dsqwg.getCount({ reset: true })
-    },
+    function reset () {
+      window.DISQUSWIDGETS.getCount({ reset: true })
+    }
 
-    loadCountScript () {
+    function loadCountScript () {
       if (document.getElementById('dsq-count-scr')) return
       const d = document
       const s = d.createElement('script')
       s.async = true
       s.id = 'dsq-count-scr'
-      s.src = `//${this.getShortname}.disqus.com/count.js`
+      s.src = `//${getShortname.value}.disqus.com/count.js`
       ;(d.head || d.body).appendChild(s)
+    }
+
+    return {
+      disqusAttrs
     }
   }
 })
