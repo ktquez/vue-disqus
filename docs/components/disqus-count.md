@@ -73,13 +73,13 @@ The URL that will be used to retrieve the amount of comments.
 If you want the element to be a link that takes you directly to the post's comments, just define the `a` tag.
 
 ::: warning
-If you define an `a` tag, the` url` prop will be required.
+If you define an `a` tag, the `url` prop will be required.
 :::
 
 ```vue
 <DisqusCount
   tag="a"
-  url="https://example.com/blog/my-awesome-post`"
+  url="https://example.com/blog/my-awesome-post"
   identifier="/blog/my-awesome-post"
 />
 ```
