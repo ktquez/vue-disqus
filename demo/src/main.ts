@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import Disqus from '../../src'
+import VueDisqus from '../../src'
 
 createApp(App)
-  .use(Disqus, { shortname: 'vue-disqus-test' })
+  .use(VueDisqus, { shortname: 'ktquez-dev-test' })
   .mount('#app')

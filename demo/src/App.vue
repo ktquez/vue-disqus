@@ -1,7 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <div>
-    <span>Comentários: </span>
+    <span>Comments: </span>
     <DisqusCount identifier="/blog/1" />
   </div>
   <Disqus />
