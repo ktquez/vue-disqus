@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/ktquez/vue-disqus/compare/v5.1.0-alpha.0...v5.1.0) (2021-05-24)
+
 ## [5.1.0-alpha.0](https://github.com/ktquez/vue-disqus/compare/v3.0.5...v5.1.0-alpha.0) (2021-04-10)
 
 
