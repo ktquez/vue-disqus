@@ -1,11 +1,11 @@
-# Setup
+# Setup Vue 3
 
 ## Installation
 
 ```bash
-$ npm install -s vue-disqus
+npm install -s vue-disqus@next
 # or
-$ yarn add vue-disqus
+yarn add vue-disqus@next
 ```
 
 ## Using
@@ -14,21 +14,23 @@ $ yarn add vue-disqus
 You can use it globally in your `main.js`
 
 ```js
-import Vue from 'vue'
+import { createApp } from 'vue'
+import App from './App.vue'
 import VueDisqus from 'vue-disqus'
 
-Vue.use(VueDisqus, {
-  shortname: 'your-shortname-disqus'
-})
+createApp(App)
+  .use(VueDisqus, { shortname: 'your_shortname_disqus' })
+  .mount('#app')
 ```
 
 Using the component in the template
 
-```vue
+```html
 <template>
-  <div class='comments'>
+  <section class='comments' aria-labelledby="comment">
+    <h2 id="comment">Comments</h2>
     <Disqus />
-  </div>
+  </section>
 </template>
 ```
 
@@ -54,12 +56,13 @@ Using the component in the template
 
 ```vue
 <template>
-  <div class='comments'>
+  <section class='comments' aria-labelledby="comment">
+    <h2 id="comment">Comments</h2>
     <Disqus shortname='your_shortname_disqus' />
-  </div>
+  </section>
 </template>
 ```
 
 ::: warning
-Shortname is required when using locally component
+**Shortname** is required when using locally component
 :::

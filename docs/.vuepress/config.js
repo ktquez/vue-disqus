@@ -22,7 +22,8 @@ module.exports = {
             collapsable: false,
             children: [
               '/',
-              '/setup.md',
+              '/setup-v2.md',
+              '/setup-v3.md',
               '/reset.md'
             ]
           },
